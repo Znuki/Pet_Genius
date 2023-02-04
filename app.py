@@ -1,47 +1,40 @@
 from flask import Flask, render_template, request, jsonify
+
 app = Flask(__name__)
 
-import requests
-from bs4 import BeautifulSoup
-
 from pymongo import MongoClient
+
 client = MongoClient('mongodb+srv://znuki:znuki@cluster0.mo5ena6.mongodb.net/?retryWrites=true&w=majority')
-db = client.dbsparta
+db = client.pet_genius
+
+
+# doc = {
+#     'num': 1,
+#     'category': '도와주세요',
+#     'job':'펫시터',
+#     'region':'서울시',
+#     'name':'강진욱'
+# }
+#
+# db.users.insert_one(doc)
+
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route("/movie", methods=["POST"])
-def movie_post():
-    url_receive = request.form['url_give']
-    star_receive = request.form['star_give']
-    comment_receive = request.form['comment_give']
+@app.route("/board", methods=["POST"])
+def write_post():
+    sample_receive = request.form['sample_give']
+    print(sample_receive)
+    return jsonify({'msg': 'POST 연결 완료!'})
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(url_receive, headers=headers)
 
-    soup = BeautifulSoup(data.text, 'html.parser')
+@app.route("/board", methods=["GET"])
+def write_get():
+    write_list = list(db.writes.find({}, {'_id': False}))
+    return jsonify({'boards':write_list})
 
-    title = soup.select_one('meta[property="og:title"]')['content']
-    image = soup.select_one('meta[property="og:image"]')['content']
-    desc = soup.select_one('meta[property="og:description"]')['content']
-
-    doc = {
-        'title':title,
-        'image':image,
-        'desc':desc,
-        'star':star_receive,
-        'comment':comment_receive
-    }
-    db.movies.insert_one(doc)
-    return jsonify({'msg': '저장 완료!'})
-
-@app.route("/movie", methods=["GET"])
-def movie_get():
-    movie_list = list(db.movies.find({}, {'_id': False}))
-    return jsonify({'movies':movie_list})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
