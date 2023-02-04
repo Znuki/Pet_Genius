@@ -1,266 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORTFOLIO</title>
-
-    <link rel="stylesheet" type="text/css" href="/static/css/style_test.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,600;0,800;0,900;1,200;1,400;1,500;1,600;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Pet Genious Login</title>
+    <link rel="stylesheet" href="/static/css/style_test.css">
+    <script src="jquery-3.4.1.min.js"></script>
 </head>
 
+
+
+
+
+
 <body>
-    <div class="frame">
-        <nav class="navigator">
-          <h3 class="name">Pet Genius</h3>
-          <ul>
-            <li><a class="nav_menu" href="">게시판</a></li>
-            <li><a class="nav_menu" href="">글 작성하기</a></li>
-          </ul>
-        </nav>
-
-        <div class="banner">
-            <h1 class="banner-name">펫 지니어스</h1>
+    <section class="login-form">
+        <h1>Login Page</h1>
+        <form action="">
+            <div class="int-area">
+                <input type="text" name="id" id="id" autocomplete="off" required>
+                <label for="id">USER NAME</label>
+            </div>
+            <div class="int-area">
+                <input type="password" name="pw" id="pw" autocomplete="off" required>
+                <label for="pw">PASSWORD</label>
+            </div>
+            <div class="btn-area">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="caption">
+            <a href="">Forgot Password?</a>
         </div>
-
-        <section class="page-section" id="contact">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">펫 지니어스 소통공간</h2>
-                <!-- Contact Section Form-->
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <div class="form-floating mb-3">
-                                <div>
-                                    <label for="category">선택</label>
-
-                                    <select id="category" name="category" title="구분" onchange="" class="select">
-                                        <option value="">:: 구분 ::</option>
-                                        <option value="680">
-                                            도와 주세요
-                                        </option>
-                                        <option value="740">
-                                            도와 드려요
-                                        </option>
-                                    </select>
-                                    <select id="role" name="role" title="역할" onchange="" class="select">
-                                        <option value="">:: 역할 ::</option>
-                                        <option value="103">
-                                            반려견 훈련사
-                                        </option>
-                                        <option value="108">
-                                            펫시터
-                                        </option>
-                                    </select>
-                                    <select id="city1" name="city1" title="시/도선택" onchange="" class="select">
-                                        <option value="">:: 시/도 ::</option>
-                                        <option value="11" title="서울특별시">
-                                            서울특별시
-                                        </option>
-                                        <option value="26" title="부산광역시"
-                                        >
-                                            부산광역시
-                                        </option>
-
-                                        <option value="27" title="대구광역시"
-                                        >
-                                            대구광역시
-                                        </option>
-
-                                        <option value="28" title="인천광역시"
-                                        >
-                                            인천광역시
-                                        </option>
-
-                                        <option value="29" title="광주광역시"
-                                        >
-                                            광주광역시
-                                        </option>
-
-                                        <option value="30" title="대전광역시"
-                                        >
-                                            대전광역시
-                                        </option>
-
-                                        <option value="31" title="울산광역시"
-                                        >
-                                            울산광역시
-                                        </option>
-
-                                        <option value="36" title="세종특별자치시"
-                                        >
-                                            세종특별자치시
-                                        </option>
-
-                                        <option value="41" title="경기도"
-                                        >
-                                            경기도
-                                        </option>
-
-                                        <option value="42" title="강원도"
-                                        >
-                                            강원도
-                                        </option>
-
-                                        <option value="43" title="충청북도"
-                                        >
-                                            충청북도
-                                        </option>
-
-                                        <option value="44" title="충청남도"
-                                        >
-                                            충청남도
-                                        </option>
-
-                                        <option value="45" title="전라북도"
-                                        >
-                                            전라북도
-                                        </option>
-
-                                        <option value="46" title="전라남도"
-                                        >
-                                            전라남도
-                                        </option>
-
-                                        <option value="47" title="경상북도"
-                                        >
-                                            경상북도
-                                        </option>
-
-                                        <option value="48" title="경상남도"
-                                        >
-                                            경상남도
-                                        </option>
-
-                                        <option value="50" title="제주특별자치도"
-                                        >
-                                            제주특별자치도
-                                        </option>
-                                    </select>
-                                    <button type="button" class="btn btn-dark">
-                                        검색
-                                    </button>
-                                </div>
-                            </div>
-
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">등록된 글들</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/static/img/pet_photo/golden.jpg" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/static/img/pet_photo/dachs.jpg" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/static/img/pet_photo/great.jpg" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/static/img/pet_photo/jack.jpg" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/static/img/pet_photo/sivelian.jpg" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/static/img/pet_photo/welsh.jpg" alt="..." />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-<!-- Footer-->
-<footer class="footer text-center">
-    <div class="container">
-        <div class="row">
-            <!-- Footer Location-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">CONTACT</h4>
-                <p class="lead mb-0">
-                    info@petgenius.com
-                    <br/>
-                    +82 - 2 - 000 - 0000
-                    <br/>
-                    Seoul, Republic of Korea
-                </p>
-            </div>
-            <!-- Footer Social Icons-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Around the Web</h4>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-            </div>
-            <!-- Footer About Text-->
-            <div class="col-lg-4">
-                <h4 class="text-uppercase mb-4">About PET GENIUS</h4>
-                <p class="lead mb-0">
-                    무슨 말을 써야 하나...
-                    <a href="http://startbootstrap.com">(링크 삽입 가능)</a>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Copyright Section-->
-<div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright &copy; PET GENIUS 2023</small></div>
-</div>
+    </section>
 
 </body>
+
+
 </html>

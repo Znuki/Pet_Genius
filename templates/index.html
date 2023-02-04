@@ -14,6 +14,9 @@
           type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/static/css/styles.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
 <body id="page-top">
     <!-- 네비게이션(수정X)-->
@@ -84,9 +87,39 @@
                 </div>
             </div>
 
+            <script>
+                const sel = document.getElementById("exampleSelect1");
+                sel.addEventListener("change", changeOpt);
+
+
+                }
+            </script>
+
             <!-- 게시판 목록 -->
             <div class="row justify-content-center">
                 <!-- 카드 1 -->
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
+                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-co                                                                                                 ntent text-center text-white"><i>More</i></div>
+                        </div>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
                     <!-- modal 대신 url 넣을 수 있도록 -->
                     <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
@@ -109,55 +142,163 @@
                         </div>
                     </div>
                 </div>
-                <!-- Portfolio Item 1-->
-                <div class="col-md-6 col-lg-4 mb-5">
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
                     <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
+                            <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
                         </div>
-                        <img class="img-fluid" src="/static/img/portfolio/cabin.png" alt="..."/>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Portfolio Item 2-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
+                            <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
                         </div>
-                        <img class="img-fluid" src="/static/img/portfolio/cake.png" alt="..."/>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Portfolio Item 3-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
+                            <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
                         </div>
-                        <img class="img-fluid" src="/static/img/portfolio/circus.png" alt="..."/>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Portfolio Item 4-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
+                            <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
                         </div>
-                        <img class="img-fluid" src="/static/img/portfolio/game.png" alt="..."/>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Portfolio Item 5-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
+                            <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
                         </div>
-                        <img class="img-fluid" src="/static/img/portfolio/safe.png" alt="..."/>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
                     </div>
+                </div>
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
+                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
+                        </div>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                    <!-- modal 대신 url 넣을 수 있도록 -->
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <!-- hover시 보이는 민트박스 -->
+                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
+                        </div>
+                        <!-- 본문내용 -->
+                        <img width="100%" height="200"
+                             src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                            <span class="badge rounded-pill bg-warning">펫시터</span>
+                            <span class="badge rounded-pill bg-success">서울시</span>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <span>닉네임 날짜</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-1 mb-5 ">
+                    <button type="button" class="btn btn-primary">더보기
+                    </button>
                 </div>
             </div>
         </div>
