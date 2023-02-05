@@ -22,29 +22,28 @@
             crossorigin="anonymous"></script>
     <script>
         // 페이지 로딩 시 자동 실행
-        $(document).ready(function () {
-            // alert("welcome!")
-        });
+        // $(document).ready(function () {
+        //     // alert("welcome!")
+        // });
 
-        // 방금 등록한 글 상세페이지 보여주는 펑션
-        function getDetail() {
-            $.ajax({
-                type: "GET",
-                url: "/detail?num=num",
-                data: {},
-                success: function (response) {
-                    // let detail = response['detail']
-                }
+        // // 방금 등록한 글 상세페이지 보여주는 펑션 - 아직 구현 전
+        // function getDetail() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "/detail?num=num",
+        //         data: {},
+        //         success: function (response) {
+        //             // let detail = response['detail']
+        //         }
+        //
+        //
+        //     })
+        //
+        // }
 
 
-            })
-
-        }
-
-        // 글쓰기에서 '등록' 버튼 누르면 실행되는 펑션
+        // 글쓰기 페이지에서 '등록' 버튼 누르면 실행되는 펑션
         function save_write() {
-
-
             // 브라우저에 입력된 값 가져오기
             let category = $('#category').val()
             let role = $('#role').val()
@@ -63,8 +62,9 @@
             let seconds = ('0' + date.getSeconds()).slice(-2);
             let timestr = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
 
-            alert(date);
+            // alert(date);
 
+            // 글 개수 가져 와서 +1 하여 다음 글 넘버 매겨 주기
             $.ajax({
                 type: "GET",
                 url: "/board",

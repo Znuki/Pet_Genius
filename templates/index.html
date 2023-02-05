@@ -19,10 +19,13 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <script>
+
+<!--        페이지 열리면 바로 실행-->
         $(document).ready(function () {
             get_board();
         });
 
+        // db에 저장된 글을 모두 가져와서 화면(아래 주석표시한 부분)에 붙여주는 펑션
         function get_board() {
             $.ajax({
                 type: 'GET',
@@ -157,7 +160,7 @@
                 </div>
             </div>
 
-<!-- 카드 붙이는 곳-->
+<!-- db에서 가져온 값 여기에 대강 붙여 보았어요. 일단 db에서 값 가져오는 걸 해결하려고 하신 거 같아서.-->
             <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box"></div>
 
         </div>
