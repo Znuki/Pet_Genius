@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Pet Genius</title>
     <!-- Favicon(수정X) -->
-    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico"/>
+<!--    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico"/>-->
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -20,10 +20,25 @@
             crossorigin="anonymous"></script>
     <script>
 
-<!--        페이지 열리면 바로 실행-->
+        <!--        페이지 열리면 바로 실행-->
         $(document).ready(function () {
             get_board();
         });
+
+
+        $("#myButton").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/detail",
+                success: function (data) {
+                    // Data has been received, process it here
+                    let num = $(this).data("value");
+                    console.log('num:'+ num)
+                    console.log('data:'+data);
+                }
+            });
+        });
+
 
         // db에 저장된 글을 모두 가져와서 화면(아래 주석표시한 부분)에 붙여주는 펑션
         function get_board() {
@@ -42,17 +57,20 @@
                         let region = details[i]['region']
                         let title = details[i]['title']
                         let name = details[i]['name']
-                        let content = details[i]['content']
+                        // let content = details[i]['content']
                         let file = details[i]['file']
 
-                        let temp_html = `<div class="col">
+                        let temp_html = `<button class="btn btn-light" type="button" id="myButton" data-value="5"><div class="col">
                                             <div class="card h-100">
                                                 <img src=${file} class="card-img-top">
+                                                <div>
+                                                ${category} ${role} ${region}
+                                                </div>
                                                 <div class="card-body">
                                                     <h5 class="card-title">${title}</h5>
                                                     <p class="card-text">${name}</p>
                                                 </div>
-                                            </div>
+                                            </div></button>
                                         </div>`
                         $('#cards-box').append(temp_html)
 
@@ -60,6 +78,8 @@
                 }
             })
         }
+
+
     </script>
 </head>
 <body id="page-top">
@@ -160,7 +180,7 @@
                 </div>
             </div>
 
-<!-- db에서 가져온 값 여기에 대강 붙여 보았어요. 일단 db에서 값 가져오는 걸 해결하려고 하신 거 같아서.-->
+            <!-- db에서 가져온 값 여기에 대강 붙여 보았어요. 일단 db에서 값 가져오는 걸 해결하려고 하신 거 같아서.-->
             <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box"></div>
 
         </div>

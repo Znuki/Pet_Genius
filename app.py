@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['TEMPLATES_FOLDER'] = 'templates'
 
 from pymongo import MongoClient
 
@@ -54,14 +56,15 @@ def board_get():
 # 추후에 작성한 글, 클릭한 글의 num을 받아와서 넣어줄 수 있게 작업해야 해요. 같이 연구해 보아요.
 @app.route("/detail", methods=["GET"])
 def detail_get():
-    # 클라이언트에서 받아온 num 값을 변수에 넣어주기
     num = request.args.get("num")
     print("넘버는" + num)
     # DB에서 해당 정보를 가져와서 변수 comments에 넣어 주기
     detail = db.genius.find_one({'num': num}, {'_id': False})
+    # print(type(detail)) - class 'dict'
     print(detail)
-    # details 안의 값을 클라이언트에 전송하기
-    return render_template("b_detail.html", detail=detail)
+    # 여기까지 실행 됨
+    # return render_template('b_detail.html', detail=detail)
+    return jsonify({'detail': detail})
 
 
 if __name__ == '__main__':
