@@ -13,8 +13,8 @@ db = client.dbsparta
 @app.route('/')
 def home():
     # return render_template('b_detail.html')
-    return render_template('write.html')
-    # return render_template('index.html')
+    # return render_template('write.html')
+    return render_template('index.html')
 
 
 # 글쓰기 페이지에서 등록 버튼을 누르고, 클라이언트에서 save_write() 펑션 실행 되면 서버의 여기로 넘어옴 - db저장
