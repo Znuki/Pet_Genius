@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Pet Genius</title>
+    <!-- Favicon(수정X) -->
+<!--    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico"/>-->
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/test_static/test_css/styles.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script>
+
+        <!--        페이지 열리면 바로 실행-->
+        $(document).ready(function () {
+            get_board();
+        });
+
+
+        $("#myButton").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/detail",
+                success: function (data) {
+                    // Data has been received, process it here
+                    let num = $(this).data("value");
+                    console.log('num:'+ num)
+                    console.log('data:'+data);
+                }
+            });
+        });
+
+
+        // db에 저장된 글을 모두 가져와서 화면(아래 주석표시한 부분)에 붙여주는 펑션
+        function get_board() {
+            $.ajax({
+                type: 'GET',
+                url: '/board',
+                data: {},
+                success: function (response) {
+                    // 변수 response에 json형식의 데이타 담겨 옴
+                    // console.log(response['movies'])
+                    let details = response['details']
+                    for (let i = 0; i < details.length; i++) {
+                        let num = details[i]['num']
+                        let category = details[i]['category']
+                        let role = details[i]['role']
+                        let region = details[i]['region']
+                        let title = details[i]['title']
+                        let name = details[i]['name']
+                        // let content = details[i]['content']
+                        let file = details[i]['file']
+
+                        let temp_html = `<button class="btn btn-light" type="button" id="myButton" data-value="5"><div class="col">
+                                            <div class="card h-100">
+                                                <img src=${file} class="card-img-top">
+                                                <div>
+                                                ${category} ${role} ${region}
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${title}</h5>
+                                                    <p class="card-text">${name}</p>
+                                                </div>
+                                            </div></button>
+                                        </div>`
+                        $('#cards-box').append(temp_html)
+
+                    }
+                }
+            })
+        }
+
+
+    </script>
+</head>
+<body id="page-top">
+<!-- 네비게이션(수정X)-->
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top">Pet Genius</a>
+        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                                     href="#portfolio">게시판</a></li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded" href="write.html" target="_blank">
+                        글 작성하기
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- 이미지 배너(수정X) -->
+<header class="bg-primary">
+    <img class="banner" src="/static/img/highfive.jpg" alt="..."/>
+</header>
+
+<!-- 여기에 각자가 맡은 Section 넣기 -->
+<!-- 게시판 -->
+<section class="page-section portfolio" id="portfolio">
+    <!-- 게시판 소개글 -->
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">펫지니어스들의 소통공간</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <h4 class="masthead-subheading text-center text-secondary mb-5">'펫시터'부터 '펫트레이너'까지! <br> 내 반려견을 위한 펫 지니어스들을 만나보세요
+        </h4>
+        <!-- 게시판 필터기능 -->
+        <div class="row justify-content-center">
+            <div class="form-group col-md-6 col-lg-4 mb-5">
+                <select class="form-select" id="exampleSelect1">
+                    <option class="text-center text-secondary">:: 구분 ::</option>
+                    <option>도와주세요</option>
+                    <option>도와드려요</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6 col-lg-4 mb-5">
+                <select class="form-select" id="exampleSelect2">
+                    <option class="text-center text-secondary">:: 역할 ::</option>
+                    <option>펫시터</option>
+                    <option>펫트레이너</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6 col-lg-4 mb-5">
+                <select class="form-select" id="exampleSelect3">
+                    <option class="text-center text-secondary">:: 지역 ::</option>
+                    <option>도와주세요</option>
+                    <option>도와드려요</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-lg-1 mb-5 ">
+                <button type="button" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+
+        <!-- 게시판 목록 -->
+        <div class="row justify-content-center">
+            <!-- 카드 1 -->
+            <div class="card col-md-4 col-lg-4 m-1" style="width: 25rem;">
+                <!-- modal 대신 url 넣을 수 있도록 -->
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    <!-- hover시 보이는 민트박스 -->
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i>More</i></div>
+                    </div>
+                    <!-- 본문내용 -->
+                    <img width="100%" height="200"
+                         src="https://th.bing.com/th/id/OIP.5HMeJ_1Xc5mo6LUkycOEpAHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+                    <div class="card-body">
+                        <span class="badge rounded-pill bg-danger mb-3">도와주세요</span>
+                        <span class="badge rounded-pill bg-warning">펫시터</span>
+                        <span class="badge rounded-pill bg-success">서울시</span>
+                        <h5 class="card-title">Special title treatment</h5>
+                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <span>닉네임 날짜</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- db에서 가져온 값 여기에 대강 붙여 보았어요. 일단 db에서 값 가져오는 걸 해결하려고 하신 거 같아서.-->
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box"></div>
+
+        </div>
+    </div>
+</section>
+
+
+<!---------------------------------------------------->
+<!-- Footer (수정X)-->
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <!-- Contact -->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4" style="color: lightslategray">CONTACT</h4>
+                <p class="lead mb-0">
+                    info@petgenius.com
+                    <br/>
+                    +82 - 2 - 123 - 5678
+                </p>
+            </div>
+            <!-- Social Icons-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4" style="color: lightslategray">Social Media</h4>
+                <p class="lead">KakaoTalk
+                    <a class="btn btn-outline-light btn-social mx-2" target="_blank"
+                       href="https://open.kakao.com/o/siarMh2e">
+                        <i class="fa-solid fa-comment"></i>
+                    </a>
+                </p>
+            </div>
+            <!-- About Text-->
+            <div class="col-lg-4">
+                <h4 class="text-uppercase mb-4" style="color: lightslategray">About PET GENIUS</h4>
+                <p class="mb-0">
+                    반려견을 키우고 있지만 쉽지 않은 나날들! <br>
+                    펫시터나 트레이너를 만나고 싶지만 어디서 만나야 할지 <br>
+                    어떤 정보를 봐야 할지 모르는 분들을 위한 커뮤니티 플랫폼
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Copyright (수정X)-->
+<div class="copyright py-4 text-center text-white">
+    <div class="container">
+        <small>Seoul, Republic of Korea</small><br>
+        <small>Copyright &copy; SWCampB03 2023</small>
+    </div>
+</div>
+
+
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+</html>

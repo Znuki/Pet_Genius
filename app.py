@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, jsonify
-
 app = Flask(__name__)
-
 from pymongo import MongoClient
 
-client = MongoClient('mongodb+srv://znuki:znuki@cluster0.mo5ena6.mongodb.net/?retryWrites=true&w=majority')
-db = client.pet_genius
+# client = MongoClient('mongodb+srv://znuki:znuki@cluster0.mo5ena6.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://test:sparta@cluster0.qxn9vle.mongodb.net/?retryWrites=true&w=majority')
+db = client.dbsparta
 
 
 # doc = {
@@ -19,21 +18,15 @@ db = client.pet_genius
 # db.users.insert_one(doc)
 
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+# @app.route('/')
+# def home():
+#     return render_template('index.html')
 
-@app.route("/board", methods=["POST"])
-def write_post():
-    sample_receive = request.form['sample_give']
-    print(sample_receive)
-    return jsonify({'msg': 'POST 연결 완료!'})
-
-
-@app.route("/board", methods=["GET"])
-def write_get():
-    write_list = list(db.writes.find({}, {'_id': False}))
-    return jsonify({'boards':write_list})
+# @app.route("/board", methods=["GET"])
+# def board_get():
+details = list(db.genius.find({}, {'_id': False}))
+print(details)
+    # return jsonify({'details':details})
 
 
 if __name__ == '__main__':
