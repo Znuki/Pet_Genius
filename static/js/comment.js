@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    alert('다 로딩됐다!');
+    show_cmt()
 });
 
 // 기록된 댓글들 불러오는 함수
@@ -18,10 +18,7 @@ function show_cmt(){
                 let name = rows[i]['name']
                 let comment = rows[i]['comment']
                 let datetime = rows[i]['created_date']
-                let date = datetime.toLocaleDateString()
-                let time = datetime.toLocaleTimeString('en-GB', {hourCycle: 'h23'})
-                datetime = date + " " + time
-
+                console.log(datetime)
                 let temp_html = `<div class="row bg-light mb-1">
                                     <div class="p-3 col-sm-3" style="background-color: #778899;">
                                         <span class="pt-5" style="color: white;">${name}</span>
@@ -39,16 +36,16 @@ function show_cmt(){
 
 // 댓글 등록하기
 function save_cmt() {
-    let b_num = 1
+    let b_num = '1'
     let name = $('#name').val();
     let comment = $('#comment').val()
 
     let today = new Date()
     let date = today.toLocaleDateString()
     let time = today.toLocaleTimeString('en-GB', {hourCycle: 'h23'})
-    // today = date + " " + time
+    today = date + " " + time
     console.log(b_num, name, comment, today)
-    let value = confirm(name + '님! 댓글 등록시 삭제가 불가능합니다. 그래도 남기시겠습니까?');
+    let value = confirm('댓글을 등록하시겠습니까? 등록 시, 수정&삭제가 어렵습니다.');
     if(value == true) {
         // alert(name, comment, b_num)
         $.ajax({
@@ -60,7 +57,7 @@ function save_cmt() {
                 window.location.reload() //댓글 등록 후 새로고침 시행
             }
         })
-    } else {
+    } else if (value == false) {
         return ;
     }
 }
