@@ -2674,6 +2674,7 @@ textarea.form-control-lg {
   left: 0;
   height: 100%;
   padding: 1.5rem 0;
+  padding: 1.5rem 0;
   pointer-events: none;
   border: 0.125rem solid transparent;
   transform-origin: 0 0;
@@ -11343,7 +11344,7 @@ html {
   padding: 1rem 1.75rem;
   font-size: 1.25rem;
 }
-
+/*아이콘 크기 수정함*/
 .btn-social {
   border-radius: 100%;
   display: inline-flex;
