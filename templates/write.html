@@ -21,6 +21,8 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <script>
+
+
         // 페이지 로딩 시 자동 실행
         // $(document).ready(function () {
         //     // alert("welcome!")
@@ -28,14 +30,14 @@
 
         // // 방금 등록한 글 상세페이지 보여주는 펑션 - 아직 구현 전
         // 방금 등록한 글 번호 num을 서버로 넘겨 줌. 서버에서 해당 글 내용을 가져와서 response 하면, 디테일 페이지에 붙여 줘야 함.
-        function show_detail() {
+        function show_detail(num) {
             $.ajax({
                 type: "GET",
                 url: "/detail",
-                data: {'num': '5'},
+                data: {'num': num},
                 success: function (response) {
                     // let detail = response['detail']
-
+                    console.log('write.html에서 show_detail()실행됨')
                 }
             })
         }
@@ -50,9 +52,8 @@
             let name = $('#name').val()
             let title = $('#title').val()
             let content = $('#content').val()
-            let file = $('#file').val()
+            // 글쓴 날짜 시간 저장
             let date = new Date();
-
             let year = date.getFullYear();
             let month = ('0' + (date.getMonth() + 1)).slice(-2);
             let day = ('0' + date.getDate()).slice(-2);
@@ -60,8 +61,18 @@
             let minutes = ('0' + date.getMinutes()).slice(-2);
             let seconds = ('0' + date.getSeconds()).slice(-2);
             let timestr = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-
-            // alert(date);
+            //파일 자체를 받아와서 서버에 보내기
+            let file = $('#file')[0].files[0]
+            // console.log(file)
+            let formData = new FormData()
+            formData.append('file', file);
+            formData.append('category', category);
+            formData.append('role', role);
+            formData.append('region', region);
+            formData.append('name', name);
+            formData.append('title', title);
+            formData.append('content', content);
+            formData.append('time', timestr);
 
             // 글 개수 가져 와서 +1 하여 다음 글 넘버 매겨 주기
             $.ajax({
@@ -74,28 +85,21 @@
                     let num = Object.keys(rows).length + 1
                     // alert(num + category + role + region + name + title + content + file)
 
+
+                    formData.append('num', num);
+
+
                     // ajax 이용해 POST 타입으로 서버에 보내기
                     $.ajax({
                         type: 'POST',
                         url: '/write',
-                        // data:{cat:"캣"},
-                        data: {
-                            num: num,
-                            category: category,
-                            role: role,
-                            region: region,
-                            name: name,
-                            title: title,
-                            content: content,
-                            file: file,
-                            time: timestr
-                        },
+                        data: formData,
+                        contentType: false,
+                        processData: false,
                         success: function (response) {
                             alert(response['msg'])
-                            // 브라우저 새로고침
-                            // window.location.reload()
                             // 방금 등록한 글의 상세 페이지 보여줘야지
-                            console.log('num이야:' + num)
+                            console.log('상세페이지 보여줄 글번호:' + num)
                             show_detail(num)
                         }
                     });
@@ -337,12 +341,14 @@
                     </div>
                     </br>
                     <!-- 이미지/동영상 업로더 -->
-                    <label for="file">파일</label>
-                    <input class="form-control" id="file" type="file" multiple="multiple" accept="image/*"/>
-                    <!--                    <div class="form-floating mb-3">-->
-                    <div class="invalid-feedback" data-sb-feedback="file:required">A file is required.</div>
-                    <div class="invalid-feedback" data-sb-feedback="file:file">File is not valid.</div>
 
+                    <form action="/write" method="post" enctype="multipart/form-data" class="form-control">
+                        <label for="file"></label>
+                        <input type="file" class="form-control" id="file" name="file"/>
+                        <!--                        <input type="submit" value="Upload">-->
+                        <div class="invalid-feedback" data-sb-feedback="file:required">A file is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="file:file">File is not valid.</div>
+                    </form>
                     </br>
 
                     <!-- Submit success message-->

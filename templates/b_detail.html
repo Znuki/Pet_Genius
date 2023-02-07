@@ -35,29 +35,27 @@
                 type: "GET",
                 url: "/detail",
                 success: function (response) {
-                    // let detail = {detail}
-                    console.log("response는" + response)
+                    console.log("b_detail로 넘어온 response는" + response)
+                    let encoded_string = response['encoded_string']
                     let detail = response['detail']
-// {{ detail["num"] }}
                     let category = detail['category']
                     let role = detail['role']
                     let region = detail['region']
                     let title = detail['title']
                     let name = detail['name']
                     let content = detail['content']
-                    let file = detail['file']
 
-                    console.log(name + " " + title)
+                    console.log(name + " " + title +" "+ encoded_string)
 
                     let temp_html = ` <div>
                                          <div> <blockquote>
+                                                    <img src="data:image/*;base64,{{ encoded_string }}"/>
                                                     <p>${category}</p>
                                                     <p>${role}</p>
                                                     <p>${region}</p>
                                                     <p>${title}</p>
                                                     <p>${name}</p>
                                                     <p>${content}</p>
-                                                    <p>${file}</p>
                                                </blockquote>
                                          </div>
                                     </div>`
