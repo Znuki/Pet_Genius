@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Pet Genius</title>
     <!-- Favicon(수정X) -->
-<!--    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico"/>-->
+    <!--    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico"/>-->
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -26,18 +26,10 @@
         });
 
 
-        $("#myButton").click(function () {
-            $.ajax({
-                type: "GET",
-                url: "/detail",
-                success: function (data) {
-                    // Data has been received, process it here
-                    let num = $(this).data("value");
-                    console.log('num:'+ num)
-                    console.log('data:'+data);
-                }
-            });
-        });
+        function show_detail(num) {
+            window.location.href = "detail?num=" + num
+        }
+
 
 
         // db에 저장된 글을 모두 가져와서 화면(아래 주석표시한 부분)에 붙여주는 펑션
@@ -47,10 +39,11 @@
                 url: '/board',
                 data: {},
                 success: function (response) {
-                    // 변수 response에 json형식의 데이타 담겨 옴
-                    // console.log(response['movies'])
+                    let img_string_list = response['img_string_list']
                     let details = response['details']
-                    for (let i = 0; i < details.length; i++) {
+                    console.log("길이" + img_string_list.length + "&" + details.length)
+                    for (let i = 0; i < img_string_list.length; i++) {
+                        let img_string = img_string_list[i]
                         let num = details[i]['num']
                         let category = details[i]['category']
                         let role = details[i]['role']
@@ -60,9 +53,9 @@
                         // let content = details[i]['content']
                         let file = details[i]['file']
 
-                        let temp_html = `<button class="btn btn-light" type="button" id="myButton" data-value="5"><div class="col">
+                        let temp_html = `<button class="btn btn-light" type="button" id="myButton" onclick="show_detail(${num})"><div class="col">
                                             <div class="card h-100">
-                                                <img src=${file} class="card-img-top">
+                                                <img class="card-img-top" src="data:image/*;base64,${img_string}"/>>
                                                 <div>
                                                 ${category} ${role} ${region}
                                                 </div>

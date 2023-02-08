@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-- Favicon-->
+    <!--    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>-->
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/styles.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script>
+        // 페이지 로딩 시 자동 실행
+        $(document).ready(function () {
+            console.log("detail.html 페이지 로딩 완료")
+            // alert("detail 페이지 실행")
+            show_detail()
+            // console.log("detail페이지의 show_detail() 호출")
+        })
+
+        // 작성한&클릭한 글의 디테일을 db에서 가져와서 상세페이지에 붙여주는 펑션
+        function show_detail() {
+            let urlParams = new URLSearchParams(window.location.search);
+            let num = urlParams.get("num");
+            // alert("detail.html에서 show_detail()불러옴. window.location.href=detail?num=+num으로 넘어온 num은" + num)
+            $.ajax({
+                type: "GET",
+                url: "/detail",
+                data: {'num': num},
+                success: function (response) {
+   // 서버에서 반환한 detail, encoded_string을 바로 html에 심으면 됨. 따로 변수 생성 필요없음.
+                    // let detail = response['detail']
+                    // let encoded_string = detail['encoded_string']
+                    // let category = detail['category']
+                    // let role = detail['role']
+                    // let region = detail['region']
+                    // let title = detail['title']
+                    // let name = detail['name']
+                    // let content = detail['content']
+                    // let temp_html = ` <div>
+                    //                      <div> <blockquote>
+                    //                                 <img src="data:image/*;base64,{{ encoded_string }}"/>
+                    //                                 <p>{{ detail.category }}</p>
+                    //                                 <p>{{ detail.role }}</p>
+                    //                                 <p>{{ detail.region }}</p>
+                    //                                 <p>{{ detail.title }}</p>
+                    //                                 <p>{{ detail.name }}</p>
+                    //                                 <p>{{ detail.content }}</p>
+                    //                                 <p>{{ detail.time }}</p>
+                    //                            </blockquote>
+                    //                      </div>
+                    //                 </div>`
+                    // $('#comment-list').append(temp_html)
+                }
+            })
+        }
+    </script>
+    <title>상세페이지</title>
+
+</head>
+<body>
+
+<!--채원 님, 일단 여기에 붙여 지게 했어요. 위에 붙이는 펑션을 복붙해서 가져 갈 때는 붙이고 싶은 곳 id를 id="comment-list"로 지정하면 적용돼요.-->
+<div id="comment-list">
+    <blockquote>
+        <img src="data:image/*;base64,{{ encoded_string }}"/>
+        <p>{{ detail.category }}</p>
+        <p>{{ detail.role }}</p>
+        <p>{{ detail.region }}</p>
+        <p>{{ detail.title }}</p>
+        <p>{{ detail.name }}</p>
+        <p>{{ detail.content }}</p>
+        <p>{{ detail.time }}</p>
+    </blockquote>
+</div>
+
+</body>
+</html>

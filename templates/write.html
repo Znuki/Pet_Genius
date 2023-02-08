@@ -31,15 +31,7 @@
         // // 방금 등록한 글 상세페이지 보여주는 펑션 - 아직 구현 전
         // 방금 등록한 글 번호 num을 서버로 넘겨 줌. 서버에서 해당 글 내용을 가져와서 response 하면, 디테일 페이지에 붙여 줘야 함.
         function show_detail(num) {
-            $.ajax({
-                type: "GET",
-                url: "/detail",
-                data: {'num': num},
-                success: function (response) {
-                    // let detail = response['detail']
-                    console.log('write.html에서 show_detail()실행됨')
-                }
-            })
+            window.location.href = "detail?num=" + num
         }
 
 
@@ -52,6 +44,12 @@
             let name = $('#name').val()
             let title = $('#title').val()
             let content = $('#content').val()
+            //파일 자체를 받아와서 서버에 보내기
+            let file = $('#file')[0].files[0]
+            if (category == null || role == null || region == null || name == null || title == null || content == null || file == null) {
+                alert("모든 항목을 채워 주셔야 글이 등록됩니다.")
+            }
+
             // 글쓴 날짜 시간 저장
             let date = new Date();
             let year = date.getFullYear();
@@ -61,8 +59,7 @@
             let minutes = ('0' + date.getMinutes()).slice(-2);
             let seconds = ('0' + date.getSeconds()).slice(-2);
             let timestr = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-            //파일 자체를 받아와서 서버에 보내기
-            let file = $('#file')[0].files[0]
+
             // console.log(file)
             let formData = new FormData()
             formData.append('file', file);
@@ -99,7 +96,7 @@
                         success: function (response) {
                             alert(response['msg'])
                             // 방금 등록한 글의 상세 페이지 보여줘야지
-                            console.log('상세페이지 보여줄 글번호:' + num)
+                            console.log('방금 저장된 글번호:' + num)
                             show_detail(num)
                         }
                     });
@@ -147,7 +144,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">게시판</a>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/board">게시판</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                                                      href="#contact">글 작성하기</a></li>
