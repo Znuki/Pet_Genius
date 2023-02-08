@@ -1,12 +1,12 @@
 
 $(document).ready(function(){
     show_cmt()
+    $('#name').on('input', processkey);
+    $('#comment').on('input', processkey);
     processkey();
 });
 
 //댓글 닉네임 + 내용 모두 작성할 경우에만 save 버튼 클릭
-$('#name').on('input', processkey);
-$('#comment').on('input', processkey);
 function processkey() {
     if ($('#name').val() == '' || $('#comment').val() == '') {
         $('#submitButton').attr("disabled", true);
