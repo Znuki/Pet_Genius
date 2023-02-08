@@ -42,6 +42,11 @@ def home():
     # return render_template('comment.html')
 
 
+@app.route('/go_write')
+def go_write():
+    return render_template('write.html')
+
+
 # 글쓰기 페이지에서 등록 버튼을 누르고, 클라이언트에서 save_write() 펑션 실행 되면 서버의 여기로 넘어옴 - db저장
 @app.route("/write", methods=["POST"])
 def write_save():
