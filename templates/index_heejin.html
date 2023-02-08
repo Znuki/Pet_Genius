@@ -14,6 +14,62 @@
           type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/static/css/styles.css" rel="stylesheet"/>
+    <!-- jquery import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #b_btn1 {
+            left : 5.3%;
+        }
+        #b_btn2 {
+            right : 5.4%;
+        }
+        .banner_btn {
+            position: absolute;
+            top: 83%;
+            opacity: 0.8;
+        }
+        .carousel-control-prev, .carousel-control-next {
+            height: 150px;
+            margin-top: 20%;
+        }
+    </style>
+    <script>
+        function write_page() {
+            var b_value1 = document.getElementById("b_btn1").getAttribute('data-value');
+            //var b_value2 = document.getElementById("b_btn2").getAttribute('data-value');
+            console.log("js b_value : " + b_value1)
+                $.ajax({
+                    type: "POST",
+                    url: "/b_write", //
+                    data: {category_give: b_value1}, //data-value값 넘기기
+                    success: function (response) {
+                        $('#category').val("b_value1").prop('selected', true);
+                        console.log("response: " + response)
+                        location.href = '/write'
+                    }
+                })
+
+
+            // if (b_value1) {
+            //     location.href = "/write";
+            //     $('#category').val(b_value1).prop('selected', true);
+
+                // location.href = "/write?category=" + b_value;
+                // let urlParams = new URLSearchParams(window.location.search);
+                // console.log("url params" + urlParams)
+                // let category= urlParams.get("category");
+
+
+
+
+            // } else {
+            //     location.href = "/";
+            //     // $('#category').val('도와 드려요').prop('selected', true);
+            // }
+        }
+
+        // location.href = "/write?category=" + bannerValue;
+    </script>
 </head>
 <body id="page-top">
     <!-- 네비게이션(수정X)-->
@@ -30,7 +86,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                                                          href="#portfolio">게시판</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">글
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/write">글
                         작성하기</a></li>
                 </ul>
             </div>
@@ -38,7 +94,31 @@
     </nav>
     <!-- 이미지 배너(수정X) -->
     <header class="bg-primary">
-        <img class="banner" src="/static/img/banner/banner_main.png" alt="..."/>
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active"> <!-- 이미지1 -->
+                    <img class="banner" src="/static/img/banner/banner_main1.png" alt="main 이미지" class="d-block"/>
+                </div>
+                <div class="carousel-item">
+                    <img class="banner" src="/static/img/banner/banner_main2.png" alt="도와주세요 이미지" class="d-block"/>
+                    <button onclick="write_page()" class="btn btn-light btn-sm banner_btn" id="b_btn1" data-value="도와 주세요"  >도움요청하러가기</button>
+                </div>
+                <div class="carousel-item">
+                    <img class="banner" src="/static/img/banner/banner_main3.png" alt="도와드려요 이미지" class="d-block"/>
+                    <button onclick="write_page()" class="btn btn-light btn-sm banner_btn" id="b_btn2" data-value="도와 드려요">프로필 올리러가기</button>
+                    <!--id="b_btn2" data-value="도와 드려요"-->
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
     </header>
 
     <!-- 여기에 각자가 맡은 Section 넣기 -->
@@ -548,5 +628,6 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 </body>
 </html>

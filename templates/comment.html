@@ -28,7 +28,6 @@
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <!--    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>-->
     <style>
-
     </style>
 </head>
 <body id="page-top">
@@ -56,14 +55,14 @@
 </nav>
 <!-- 이미지 배너(수정X) -->
 <header class="bg-primary">
-    <img class="banner" src="/static/img/banner/banner_main.png" alt="..."/>
+    <img class="banner" src="/static/img/banner/banner_details.png" alt="..."/>
 </header>
 
 <!-- 여기에 각자가 맡은 Section 넣기 -->
 <!-- 댓글 section -->
-<section class="page-section container" id="comment_list" style="max-width: 1000px;">
+<section class="page-section container" id="comment_list" style="max-width: 800px;">
     <!-- Icon Divider-->
-    <div class="divider-custom">
+    <div class="divider-custom" id="dividers">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
         <div class="divider-custom-line"></div>
@@ -77,28 +76,24 @@
     </div>
     <!-- 댓글 입력창 -->
     <div class="mt-2 mb-4">
-        <form class="row" class="was-validated">
+        <form class="row" >
             <!-- Name input-->
             <div class="form-floating col-sm-3 mx-auto mb-3">
                 <input type="text" class="form-control" placeholder="Enter name" id="name" required>
                 <label for="name">닉네임</label>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <!-- comment input-->
-            <div class="form-floating col-sm-8 mx-auto mb-3">
+            <div class="form-floating col-sm-7 mx-auto mb-3">
                 <input type="text" class="form-control" placeholder="Enter comment" id="comment" required>
                 <label for="comment">댓글내용</label>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
         <!-- Submit Button-->
-        <button class="btn btn-outline-primary mx-auto col-sm-1 mt-5" id="submitButton" type="button"
-                onclick="save_cmt()" style="height: 40px; width: 80px">save
-        </button>
+            <button class="btn btn-outline-primary mx-auto col-sm-1 mt-5" id="submitButton" type="submit"
+                    disabled="true" onclick="save_cmt()" style="height: 40px; width: 70px">등록
+            </button>
         </form>
     </div>
-    <!-- 댓글 보여주기 -->
+    <!-- 댓글 보여주기 // -->
     <div class="container" style="max-width: 1000px;" id="cmt_box">
     </div>
 </section>

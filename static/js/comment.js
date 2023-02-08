@@ -1,7 +1,19 @@
 
 $(document).ready(function(){
     show_cmt()
+    processkey();
 });
+
+//댓글 닉네임 + 내용 모두 작성할 경우에만 save 버튼 클릭
+$('#name').on('input', processkey);
+$('#comment').on('input', processkey);
+function processkey() {
+    if ($('#name').val() == '' || $('#comment').val() == '') {
+        $('#submitButton').attr("disabled", true);
+    } else {
+        $('#submitButton').attr("disabled", false);
+    }
+}
 
 // 기록된 댓글들 불러오는 함수
 //채원님 detail 페이지에서 값 가져오기(합치기)
@@ -19,6 +31,7 @@ function show_cmt(){
                 let comment = rows[i]['comment']
                 let datetime = rows[i]['created_date']
                 console.log(datetime)
+
                 let temp_html = `<div class="row bg-light mb-1">
                                     <div class="p-3 col-sm-3" style="background-color: #778899;">
                                         <span class="pt-5" style="color: white;">${name}</span>
@@ -34,7 +47,7 @@ function show_cmt(){
     })
 }
 
-// 댓글 등록하기
+// 댓글 등록하기 > 추후 게시글 num 넘겨받기
 function save_cmt() {
     let b_num = '1'
     let name = $('#name').val();
@@ -55,6 +68,7 @@ function save_cmt() {
             success: function (response) {
                 alert(response['msg']) //댓글이 등록되면 완료메세지 보내기
                 window.location.reload() //댓글 등록 후 새로고침 시행
+                location.href="#dividers"
             }
         })
     } else if (value == false) {

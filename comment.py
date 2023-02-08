@@ -14,6 +14,14 @@ db = client.dbsparta
 # all = list(db.comments.find({'b_num':1}))
 # print(all)
 
+@app.route('/test')
+def test():
+    return render_template('index_heejin.html')
+
+@app.route('/write')
+def write():
+    return render_template('write.html')
+
 # 메인페이지 가기
 @app.route('/')
 def home():
@@ -27,7 +35,6 @@ def comment_get():
     cmt_list = list(db.comments.find({'b_num':'1'}, {'_id' : False}))
     print(cmt_list)
     return jsonify({'cmt_list': cmt_list})
-    # return render_template('index.html')
 
 # 댓글 내용 저장하기
 @app.route('/comment', methods=['POST'])
